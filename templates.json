@@ -1,0 +1,40 @@
+{
+    "Vue": [
+        "src/assets",
+        "src/components",
+        "src/views",
+        "src/router",
+        "src/store",
+        "public"
+    ],
+    "React": [
+        "src/components",
+        "src/hooks",
+        "src/pages",
+        "src/services",
+        "src/utils",
+        "public"
+    ],
+    "Flutter": [
+        "lib/api",
+        "lib/components",
+        "lib/services",
+        "lib/providers",
+        "assets/images",
+        "assets/fonts"
+    ],
+    "FastAPI": [
+        "app/api",
+        "app/models",
+        "app/schemas",
+        "app/core",
+        "app/db"
+    ],
+    "Django": [
+        "apps",
+        "templates",
+        "static",
+        "media",
+        "config"
+    ]
+}
