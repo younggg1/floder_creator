@@ -5,7 +5,7 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[('templates.json', '.'), ('logofast_1773751792401.png', '.'), ('ui', 'ui')],
+    datas=[('templates.json', '.'), ('logofast_1773751792401.png', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},

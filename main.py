@@ -1,6 +1,13 @@
+import os
 import sys
 from PyQt6.QtWidgets import QApplication, QCheckBox, QDialog
 from PyQt6.QtCore import Qt
+
+def resource_path(relative_path):
+    """获取资源绝对路径，兼容 PyInstaller"""
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
 
 # 导入逻辑层
 from logic import TemplateManager
@@ -14,8 +21,22 @@ class FolderCreatorController(MainWindowUI):
     """控制器类：连接 UI 表现与业务逻辑"""
 
     def __init__(self):
-        super().__init__()
-        self.manager = TemplateManager()
+        # 计算图标路径
+        icon_path = resource_path("logofast_1773751792401.png")
+        super().__init__(icon_path=icon_path)
+        
+        # 计算模板路径 (如果是打包环境，优先使用打包进去的，否则使用当前目录的)
+        config_path = resource_path("templates.json")
+        # 注意：打包后 templates.json 还是应该在本地可修改，所以我们可能需要一点逻辑
+        # 如果当前目录没有 templates.json，就用打包进去的那个
+        if not os.path.exists("templates.json") and os.path.exists(config_path):
+             import shutil
+             try:
+                 shutil.copy(config_path, "templates.json")
+             except:
+                 pass
+        
+        self.manager = TemplateManager(config_path="templates.json")
         
         # 应用 Win11 风格样式
         self.setStyleSheet(get_win11_style())

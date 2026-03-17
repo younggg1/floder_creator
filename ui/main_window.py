@@ -12,10 +12,11 @@ from .dialogs import AddTemplateDialog
 class MainWindowUI(QMainWindow):
     """主窗口 UI 类"""
 
-    def __init__(self):
+    def __init__(self, icon_path=None):
         super().__init__()
         self.setWindowTitle("批量文件夹创建工具")
-        self.setWindowIcon(QIcon("logofast_1773751792401.png"))
+        if icon_path:
+            self.setWindowIcon(QIcon(icon_path))
         self.resize(1000, 700) 
         
         # 容器
